@@ -47,7 +47,7 @@ verbs = ['silence',
          'stir',
          'stirfry',
          'take']
-indices = [[0],
+v_indices = [[0],
            [1, 2],
            [3],
            [4],
@@ -61,9 +61,50 @@ indices = [[0],
            [30],
            [31,32,33,34,35,36,37,38],
            [39,40,41,42,43,44,45,46,47]]
+for i in range(len(v_indices)):
+    ax.scatter(tsne_proj[v_indices[i], 0],
+               tsne_proj[v_indices[i], 1],
+               c=np.array(cmap(i)).reshape(1, 4),
+               label=verbs[i],
+               alpha=0.5)
 
-for i in range(len(indices)):
-    ax.scatter(tsne_proj[indices[i],0],tsne_proj[indices[i],1], c=np.array(cmap(i)).reshape(1,4), label = verbs[i] ,alpha=0.5)
+objects = {'silence': [0],
+           'salt and pepper': [1],
+           'teabag': [2],
+           'pan': [3],
+           'egg': [4, 8, 13, 22, 34, 38, 42],
+           'bun': [5, 21],
+           'fruit': [6, 10, 23, 35],
+           'orange': [7, 30],
+           'pancake': [9, 24],
+           'cereal': [11, 31],
+           'coffee': [12, 32],
+           'dough': [13, 33],
+           'flour': [15, 27],
+           'juice': [16],
+           'milk': [17, 36],
+           'oil': [18],
+           'sugar': [19, 29],
+           'water': [20],
+           'topping': [25, 47],
+           'butter': [26, 40],
+           'powder': [28],
+           'tea': [37],
+           'bowl': [40],
+           'cup': [41],
+           'glass': [43],
+           'knife': [44],
+           'plate': [45],
+           'squeezer': [46]}
+# i = 0
+# for object, indices in objects.items():
+#     ax.scatter(tsne_proj[indices, 0],
+#                tsne_proj[indices, 1],
+#                c=np.array(cmap(i)).reshape(1, 4),
+#                label=object,
+#                alpha=0.5)
+#     i += 1
+
 ax.legend(fontsize='large', markerscale=2)
 plt.show()
 
